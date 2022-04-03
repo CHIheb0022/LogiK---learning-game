@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
               Column(
                 children: <Widget>[
                   const Text(
-                    "Welcome",
+                    "Welcome to LOGIK!",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Text("BackSlash Flutter provides extraordinary flutter tutorials. Do Subscribe! ",
+                  Text("a game that tickles your mind! ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.grey[700],
