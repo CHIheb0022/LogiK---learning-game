@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/MainMenu.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -72,7 +73,8 @@ class LoginPage extends StatelessWidget {
                       child: MaterialButton(
                         minWidth: double.infinity,
                         height: 60,
-                        onPressed: () {},
+                        onPressed: () { 
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> MainMenuPage()));},
                         color: const Color(0xff0095FF),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
