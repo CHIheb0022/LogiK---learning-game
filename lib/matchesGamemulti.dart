@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+import 'dart:math' as m;
 
 import 'package:flutter_application_1/MainMenu.dart';
 
-class Matches extends StatefulWidget {
-  const Matches({Key? key, required this.title}) : super(key: key);
+class MatchesMulti extends StatefulWidget {
+  const MatchesMulti({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<Matches> createState() => MatchesGame();
+  State<MatchesMulti> createState() => MatchesGameMulti();
 }
 
-class MatchesGame extends State<Matches> {
-  int PlayerTurn = 0; 
+class MatchesGameMulti extends State<MatchesMulti> {
+  int Player1Turn = 0; 
   int NbrMatches=20;
-  int CpuTurn =0;
+  int Player2Turn =0;
  OverlayEntry _getEntry(context) {
     OverlayEntry entry = OverlayEntry(builder: (_) => Container());
 
@@ -34,12 +35,9 @@ class MatchesGame extends State<Matches> {
           ),
           child: Material(
             type: MaterialType.transparency,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+            child: 
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(
                       width: 350,
@@ -50,7 +48,7 @@ class MatchesGame extends State<Matches> {
                            Padding(
                             padding: const EdgeInsets.fromLTRB(0, 10, 0, 100),
                             child: Text(
-                              "You Lost !",
+                              "Player One Lost!",
                              style: TextStyle(
               fontSize: 40,
               foreground: Paint()
@@ -76,7 +74,7 @@ class MatchesGame extends State<Matches> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const Matches(title: '',)),
+                                               const MatchesMulti(title: '',)),
                                       (Route<dynamic> route) => false,
                                     );
                                     entry.remove();
@@ -139,8 +137,6 @@ class MatchesGame extends State<Matches> {
                     ),
                   ],
                 ),
-              ],
-            ),
           ),
         ),
       ),
@@ -149,25 +145,9 @@ class MatchesGame extends State<Matches> {
   }
   void Game() {
     setState(() {
-      NbrMatches=NbrMatches-PlayerTurn;
+      NbrMatches=NbrMatches-Player1Turn;
       if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
-      switch(NbrMatches % 4) { 
-   case 3: { 
-      CpuTurn= 2;
-      break; } 
-    case 2: { 
-      CpuTurn=1;
-      break;
-   } 
-    case 0:{
-        CpuTurn=3;
-        break;
-      }
-    
-   default: {CpuTurn=1 ; break;
-   }   
-} 
-NbrMatches=NbrMatches-CpuTurn;
+NbrMatches=NbrMatches-Player2Turn;
 if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
     });
   }
@@ -177,20 +157,31 @@ if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
     return Scaffold(
       backgroundColor: Colors.blue[900],
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Stack(
-         children: <Widget>[
-Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-             Center(child: Text(
-              'The number of matches is',
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+         children: <Widget>[       
+           Align(
+      alignment: Alignment.topCenter,
+      child :Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      IconButton(
+        onPressed: (){Player1Turn=1;Game();},
+        iconSize: 60.0,
+        icon:  const ImageIcon(
+          AssetImage("assets/pngegg.png"),
+        ),),
+      ElevatedButton(onPressed: (){Player1Turn=2;Game();}, child: Text('two ')),
+      ElevatedButton(onPressed: (){Player1Turn=3;Game();}, child: Text('three ')),
+    ],
+      ),
+    ),
+        Transform.rotate(
+          angle: m.pi,
+          child:  Text(
+              'The number of matches is $NbrMatches',
               textAlign: TextAlign.center,
               style: TextStyle(
               fontSize: 40,
@@ -204,9 +195,11 @@ Center(
         ],
       )
   ),
-            ),),
-            Text(
-              '$NbrMatches',
+            ),
+        )
+        ,Text(
+              'The number of matches is $NbrMatches',
+              textAlign: TextAlign.center,
               style: TextStyle(
               fontSize: 40,
               foreground: Paint()
@@ -215,27 +208,24 @@ Center(
                const Offset(150, 20),
                <Color>[
                Colors.red,
-                Colors.yellow,
+               Colors.yellow,
         ],
       )
   ),
-              
             ),
             Align(
       alignment: Alignment.bottomCenter,
       child :Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       IconButton(
-        onPressed: (){PlayerTurn=1;Game();},
+        onPressed: (){Player2Turn=1;Game();},
         iconSize: 60.0,
         icon:  const ImageIcon(
           AssetImage("assets/pngegg.png"),
         ),),
-      SizedBox(width: 25,),
-      ElevatedButton(onPressed: (){PlayerTurn=2;Game();}, child: Text('two ')),
-      SizedBox(width: 25,),
-      ElevatedButton(onPressed: (){PlayerTurn=3;Game();}, child: Text('three ')),
+      ElevatedButton(onPressed: (){Player2Turn=2;Game();}, child: Text('two ')),
+      ElevatedButton(onPressed: (){Player2Turn=3;Game();}, child: Text('three ')),
     ],
       ),
     ),
@@ -243,9 +233,7 @@ Center(
           ],
         ),
 
-    ),
-         ],
-      ),
       );
   }
 }
+

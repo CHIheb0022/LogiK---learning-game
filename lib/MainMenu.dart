@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/matchesGame.dart';
+import 'package:flutter_application_1/matchesGamemulti.dart';
 import 'dart:ui' as ui;
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ OverlayEntry _getEntry(context) {
                                     entry.remove();
                                   },
                                   child:  Text(
-                                    "Restart Level",
+                                    "Solo Mode",
                                     style: TextStyle(
               fontSize: 20,
               foreground: Paint()
@@ -81,11 +82,11 @@ OverlayEntry _getEntry(context) {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const MainMenuPage()));
+                                            builder: (context) => const MatchesMulti(title: '') ));
                                     entry.remove();
                                   },
                                   child:  Text(
-                                    "Main Menu",
+                                    "Multiplayer Mode",
                                     style: TextStyle(
               fontSize: 20,
               foreground: Paint()
