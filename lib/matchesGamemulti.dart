@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as m;
-
 import 'package:flutter_application_1/MainMenu.dart';
+import 'package:flutter_circular_text/circular_text.dart';
+import 'package:elliptic_text/elliptic_text.dart';
 
 class MatchesMulti extends StatefulWidget {
   const MatchesMulti({Key? key, required this.title}) : super(key: key);
@@ -146,9 +147,9 @@ class MatchesGameMulti extends State<MatchesMulti> {
   void Game() {
     setState(() {
       NbrMatches=NbrMatches-Player1Turn;
-      if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
+      if(NbrMatches<=1){Overlay.of(context)?.insert(_getEntry(context));}
 NbrMatches=NbrMatches-Player2Turn;
-if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
+if(NbrMatches<=1){Overlay.of(context)?.insert(_getEntry(context));}
     });
   }
 
@@ -156,63 +157,71 @@ if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[900],
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
+      body: Container(
+        decoration: const BoxDecoration(
+    image: DecorationImage(
+        image: AssetImage("assets/Background multi.png"), 
+        fit: BoxFit.cover),
+  ),
+         child: 
+      Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
          children: <Widget>[       
            Align(
       alignment: Alignment.topCenter,
       child :Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
+     children: [
       IconButton(
         onPressed: (){Player1Turn=1;Game();},
-        iconSize: 60.0,
-        icon:  const ImageIcon(
-          AssetImage("assets/pngegg.png"),
-        ),),
-      ElevatedButton(onPressed: (){Player1Turn=2;Game();}, child: Text('two ')),
-      ElevatedButton(onPressed: (){Player1Turn=3;Game();}, child: Text('three ')),
+        iconSize: 110.0,
+         icon: Transform.rotate(
+          angle: m.pi, 
+          child:Image.asset("assets/1.png"),
+          ),
+        ),
+     IconButton(
+        onPressed: (){Player1Turn=2;Game();},
+        iconSize: 110.0,
+        icon: Transform.rotate(
+          angle: m.pi, 
+          child:Image.asset("assets/2.png"),
+          ),
+        ),
+      IconButton(
+        onPressed: (){Player1Turn=3;Game();},
+        iconSize: 110.0,
+         icon: Transform.rotate(
+          angle: m.pi, 
+          child:Image.asset("assets/3.png"),
+          ),
+        ),
     ],
       ),
     ),
         Transform.rotate(
           angle: m.pi,
-          child:  Text(
-              'The number of matches is $NbrMatches',
+          child:CircularText(
+  children: [
+    TextItem(
+      text: Text(
+              'The number of matches is $NbrMatches The number of matches is $NbrMatches ',
               textAlign: TextAlign.center,
               style: TextStyle(
-              fontSize: 40,
-              foreground: Paint()
-             ..shader = ui.Gradient.linear(
-              const Offset(0, 20),
-               const Offset(150, 20),
-               <Color>[
-               Colors.red,
-               Colors.yellow,
-        ],
-      )
+              fontSize: 45,
+              color: Colors.yellow[900],
   ),
             ),
-        )
-        ,Text(
-              'The number of matches is $NbrMatches',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-              fontSize: 40,
-              foreground: Paint()
-             ..shader = ui.Gradient.linear(
-              const Offset(0, 20),
-               const Offset(150, 20),
-               <Color>[
-               Colors.red,
-               Colors.yellow,
-        ],
-      )
-  ),
-            ),
+       space: 6.2,
+      startAngle: 180,
+      startAngleAlignment: StartAngleAlignment.center,
+      direction: CircularTextDirection.anticlockwise,
+    ),
+    ],
+     radius: 280,
+  position: CircularTextPosition.inside,
+    )
+        ),
             Align(
       alignment: Alignment.bottomCenter,
       child :Row(
@@ -220,12 +229,23 @@ if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
     children: [
       IconButton(
         onPressed: (){Player2Turn=1;Game();},
-        iconSize: 60.0,
-        icon:  const ImageIcon(
-          AssetImage("assets/pngegg.png"),
-        ),),
-      ElevatedButton(onPressed: (){Player2Turn=2;Game();}, child: Text('two ')),
-      ElevatedButton(onPressed: (){Player2Turn=3;Game();}, child: Text('three ')),
+        iconSize: 110.0,
+        // ignore: prefer_const_constructors
+        icon:  Image.asset("assets/1.png"
+        ),
+        ),
+     IconButton(
+        onPressed: (){Player2Turn=2;Game();},
+        iconSize: 110.0,
+        icon: Image.asset("assets/2.png"
+        ),
+        ),
+      IconButton(
+        onPressed: (){Player2Turn=3;Game();},
+        iconSize: 110.0,
+         icon:  Image.asset("assets/3.png"
+        ),
+        ),
     ],
       ),
     ),
@@ -233,7 +253,8 @@ if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
           ],
         ),
 
-      );
+    )
+    );
   }
 }
 

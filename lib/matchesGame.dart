@@ -176,18 +176,17 @@ if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[900],
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Stack(
+      body: Container(
+        decoration: const BoxDecoration(
+    image: DecorationImage(
+        image: AssetImage("assets/Background singleplayer.png"), 
+        fit: BoxFit.cover),
+  ),
+         child: Stack(
          children: <Widget>[
 Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
              Center(child: Text(
               'The number of matches is',
@@ -224,18 +223,28 @@ Center(
             Align(
       alignment: Alignment.bottomCenter,
       child :Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       IconButton(
         onPressed: (){PlayerTurn=1;Game();},
-        iconSize: 60.0,
-        icon:  const ImageIcon(
-          AssetImage("assets/pngegg.png"),
-        ),),
-      SizedBox(width: 25,),
-      ElevatedButton(onPressed: (){PlayerTurn=2;Game();}, child: Text('two ')),
-      SizedBox(width: 25,),
-      ElevatedButton(onPressed: (){PlayerTurn=3;Game();}, child: Text('three ')),
+        iconSize: 110.0,
+        // ignore: prefer_const_constructors
+        icon:  Image.asset(
+          "assets/1.png" 
+          ),
+        ),
+     IconButton(
+        onPressed: (){PlayerTurn=2;Game();},
+        iconSize: 110.0,
+        icon: Image.asset("assets/2.png"
+        ),
+        ),
+      IconButton(
+        onPressed: (){PlayerTurn=3;Game();},
+        iconSize: 110.0,
+         icon:  Image.asset("assets/3.png"
+        ),
+        ),
     ],
       ),
     ),
@@ -246,6 +255,7 @@ Center(
     ),
          ],
       ),
-      );
+    ),
+    );
   }
 }
