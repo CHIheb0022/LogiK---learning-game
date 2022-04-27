@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/matchesGame.dart';
 import 'package:flutter_application_1/matchesGamemulti.dart';
+import 'package:flutter_application_1/quizgame.dart';
 import 'dart:ui' as ui;
+
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({Key? key}) : super(key: key);
-OverlayEntry _getEntry(context) {
+  OverlayEntry _getEntry(context) {
     OverlayEntry entry = OverlayEntry(builder: (_) => Container());
 
     entry = OverlayEntry(
@@ -36,6 +38,14 @@ OverlayEntry _getEntry(context) {
                       color: Colors.blue[700],
                       child: Column(
                         children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: IconButton(
+                                onPressed: () {
+                                  entry.remove();
+                                },
+                                icon: Icon(Icons.close_rounded)),
+                          ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                             child: SizedBox(
@@ -46,26 +56,26 @@ OverlayEntry _getEntry(context) {
                                     Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Matches(title: '',)),
+                                          builder: (context) => const Matches(
+                                                title: '',
+                                              )),
                                       (Route<dynamic> route) => false,
                                     );
                                     entry.remove();
                                   },
-                                  child:  Text(
+                                  child: Text(
                                     "Solo Mode",
                                     style: TextStyle(
-              fontSize: 20,
-              foreground: Paint()
-             ..shader = ui.Gradient.linear(
-              const Offset(0, 20),
-               const Offset(150, 20),
-               <Color>[
-               Colors.red,
-                Colors.yellow,
-        ],
-      )
-  ),
+                                        fontSize: 20,
+                                        foreground: Paint()
+                                          ..shader = ui.Gradient.linear(
+                                            const Offset(0, 20),
+                                            const Offset(150, 20),
+                                            <Color>[
+                                              Colors.red,
+                                              Colors.yellow,
+                                            ],
+                                          )),
                                   ),
                                   style: OutlinedButton.styleFrom(
                                       side: const BorderSide(
@@ -82,23 +92,23 @@ OverlayEntry _getEntry(context) {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const MatchesMulti(title: '') ));
+                                            builder: (context) =>
+                                                const MatchesMulti(title: '')));
                                     entry.remove();
                                   },
-                                  child:  Text(
+                                  child: Text(
                                     "Multiplayer Mode",
                                     style: TextStyle(
-              fontSize: 20,
-              foreground: Paint()
-             ..shader = ui.Gradient.linear(
-              const Offset(0, 20),
-               const Offset(150, 20),
-               <Color>[
-               Colors.red,
-                Colors.yellow,
-        ],
-      )
-  ),
+                                        fontSize: 20,
+                                        foreground: Paint()
+                                          ..shader = ui.Gradient.linear(
+                                            const Offset(0, 20),
+                                            const Offset(150, 20),
+                                            <Color>[
+                                              Colors.red,
+                                              Colors.yellow,
+                                            ],
+                                          )),
                                   ),
                                   style: OutlinedButton.styleFrom(
                                       side: const BorderSide(
@@ -118,26 +128,28 @@ OverlayEntry _getEntry(context) {
     );
     return entry;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
-      body: Stack(
-       children: <Widget>[ 
-         Center(child: Column(children:<Widget> [Text("****************"),
-          Text("****************"),
-          Text("****************"),
-                     
-           ElevatedButton(onPressed: (){
-             Overlay.of(context)?.insert(_getEntry(context));
-           },
-            child: Text('Matches ')),
-          ]
-          )
-          )
-          ]
-          )
-          );
-
+        backgroundColor: Colors.red,
+        body: Stack(children: <Widget>[
+          Center(
+              child: Column(children: <Widget>[
+            Text("****************"),
+            Text("****************"),
+            Text("****************"),
+            ElevatedButton(
+                onPressed: () {
+                  Overlay.of(context)?.insert(_getEntry(context));
+                },
+                child: Text('Matches ')),
+                 ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> QuizGame()));
+                },
+                child: Text('quiz ')),
+          ]))
+        ]));
   }
 }

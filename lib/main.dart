@@ -17,10 +17,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          // we will give media query height
-          // double.infinity make it big as my parent allows
-          // while MediaQuery make it big as per the screen
-
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
