@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 import 'package:flutter_application_1/MainMenu.dart';
+import 'package:flutter_application_1/nbreofmatches.dart';
 
 class Matches extends StatefulWidget {
   const Matches({Key? key, required this.title}) : super(key: key);
@@ -14,8 +15,9 @@ class Matches extends StatefulWidget {
 
 class MatchesGame extends State<Matches> {
   int PlayerTurn = 0; 
-  int NbrMatches=20;
+  int NbrMatches= 30;
   int CpuTurn =0;
+
  OverlayEntry _getEntry(context) {
     OverlayEntry entry = OverlayEntry(builder: (_) => Container());
 
@@ -44,7 +46,10 @@ class MatchesGame extends State<Matches> {
                     Container(
                       width: 350,
                       height: 350,
-                      color: Colors.blue[700],
+                      decoration: const BoxDecoration(
+                          color: ui.Color.fromARGB(255, 7, 0, 82) ,
+                          borderRadius: BorderRadius.all(Radius.circular(20))
+                          ),
                       child: Column(
                         children: [
                            Padding(
@@ -149,8 +154,8 @@ class MatchesGame extends State<Matches> {
   }
   void Game() {
     setState(() {
-      NbrMatches=NbrMatches-PlayerTurn;
-      if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
+      NbrMatches=(NbrMatches - PlayerTurn);
+      if(NbrMatches<=1){Overlay.of(context)?.insert(_getEntry(context));}
       switch(NbrMatches % 4) { 
    case 3: { 
       CpuTurn= 2;
@@ -167,8 +172,11 @@ class MatchesGame extends State<Matches> {
    default: {CpuTurn=1 ; break;
    }   
 } 
-NbrMatches=NbrMatches-CpuTurn;
-if(NbrMatches==1){Overlay.of(context)?.insert(_getEntry(context));}
+  NbrMatches=(NbrMatches - CpuTurn);
+if(NbrMatches<=1){
+  Future.delayed(Duration(milliseconds: 500), () {
+ Overlay.of(context)?.insert(_getEntry(context));
+});}
     });
   }
 
@@ -248,8 +256,23 @@ Center(
     ],
       ),
     ),
-
-          ],
+Text(
+              'Cpu took $CpuTurn',
+              style: TextStyle(
+              fontSize: 15,
+              foreground: Paint()
+             ..shader = ui.Gradient.linear(
+              const Offset(0, 20),
+               const Offset(150, 20),
+               <Color>[
+               Colors.red,
+                Colors.yellow,
+        ],
+      )
+  ),
+              
+            ),
+    ],
         ),
 
     ),

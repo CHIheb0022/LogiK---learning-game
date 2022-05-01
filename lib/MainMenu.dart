@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/matchesGame.dart';
 import 'package:flutter_application_1/matchesGamemulti.dart';
 import 'package:flutter_application_1/quizgame.dart';
+import 'package:flutter_application_1/nbreofmatches.dart';
 import 'dart:ui' as ui;
 
 class MainMenuPage extends StatelessWidget {
@@ -35,7 +36,10 @@ class MainMenuPage extends StatelessWidget {
                     Container(
                       width: 350,
                       height: 350,
-                      color: Colors.blue[700],
+                     decoration: const BoxDecoration(
+                          color: ui.Color.fromARGB(255, 7, 0, 82) ,
+                          borderRadius: BorderRadius.all(Radius.circular(20))
+                          ),
                       child: Column(
                         children: [
                           Align(
@@ -56,9 +60,7 @@ class MainMenuPage extends StatelessWidget {
                                     Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const Matches(
-                                                title: '',
-                                              )),
+                                          builder: (context) => const NbrMatches()),
                                       (Route<dynamic> route) => false,
                                     );
                                     entry.remove();
