@@ -3,14 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/login.dart';
 import 'package:flutter_application_1/signup.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: HomePage(),
@@ -38,27 +32,31 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
+
                     ),
+                    
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "a game that tickles your mind! ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.grey[700],
-                      fontSize: 15,
-                    ),
-                  )
+                  Text("a game that tickles your mind! ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 15,
+
+                  ),)
                 ],
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 3,
                 decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/welcome.png"))),
+                  image: DecorationImage(
+                    image: AssetImage("assets/welcome.png")
+                  )
+                ),
               ),
+
               Column(
                 children: <Widget>[
                   // the login button
@@ -66,43 +64,52 @@ class HomePage extends StatelessWidget {
                     minWidth: double.infinity,
                     height: 60,
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+
                     },
                     // defining the shape
                     shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.circular(50)),
+                      side: const BorderSide(
+                        color: Colors.black
+                      ),
+                      borderRadius: BorderRadius.circular(50)
+                    ),
                     child: const Text(
                       "Login",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18
+                      ),
                     ),
                   ),
                   // creating the signup button
-                  const SizedBox(height: 20),
+                  const SizedBox(height:20),
                   MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignupPage()));
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
+
                     },
                     color: Color(0xff0095FF),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
+                      borderRadius: BorderRadius.circular(50)
+                    ),
                     child: const Text(
                       "Sign up",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18
+                      ),
                     ),
                   )
+
                 ],
               )
+
+
+
             ],
           ),
         ),
