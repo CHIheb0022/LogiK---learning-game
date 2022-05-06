@@ -23,31 +23,20 @@ class WelcomeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline4?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                  Text("Enter your informations below"),
                   Spacer(), // 1/6
-                  TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFF1C2341),
-                      hintText: "Full Name",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                      ),
-                    ),
-                  ),
-                  Spacer(), // 1/6
+                  
                   InkWell(
                     onTap: () => Get.to(QuizScreen()),
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       padding: EdgeInsets.all(kDefaultPadding * 0.75), // 15
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         gradient: kPrimaryGradient,
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                       child: Text(
-                        "Lets Start Quiz",
+                        "Let's Start Quiz",
                         style: Theme.of(context)
                             .textTheme
                             .button

@@ -8,12 +8,11 @@ import 'progress_bar.dart';
 import 'question_card.dart';
 
 class Body extends StatelessWidget {
-  const Body({
-    Key? key,
-  }) : super(key: key);
+  const Body();
 
   @override
   Widget build(BuildContext context) {
+    // So that we have acccess our controller
     QuestionController _questionController = Get.put(QuestionController());
     return Stack(
       children: [

@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/matchesGame.dart';
 import 'package:flutter_application_1/matchesGamemulti.dart';
-import 'package:flutter_application_1/quizgame.dart';
 import 'package:flutter_application_1/nbreofmatches.dart';
 import 'dart:ui' as ui;
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/quizgame.dart';
+import 'package:flutter_application_1/screens/quiz/quiz_screen.dart';
+import 'package:flutter_application_1/screens/welcome/welcome_screen.dart';
+import 'package:get/get.dart';
+import 'package:flutter_application_1/constants.dart';
+import 'package:flutter_application_1/controllers/question_controller.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../quiz/quiz_screen.dart';
 
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({Key? key}) : super(key: key);
@@ -134,24 +142,143 @@ class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.red,
-        body: Stack(children: <Widget>[
-          Center(
-              child: Column(children: <Widget>[
-            Text("****************"),
-            Text("****************"),
-            Text("****************"),
-            ElevatedButton(
-                onPressed: () {
-                  Overlay.of(context)?.insert(_getEntry(context));
-                },
-                child: Text('Matches ')),
-                 ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> QuizGame()));
-                },
-                child: Text('quiz ')),
-          ]))
-        ]));
+      body : Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/back2.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child:Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ),
+            ),
+            const Padding(
+              padding:  EdgeInsets.all(18.0),
+              child: Text(
+                'Logik Games',
+                style:TextStyle(
+                  color:Colors.white,
+                  fontSize:28.0,
+                  fontWeight:FontWeight.bold
+                ),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Center(
+                child: Wrap(
+                  spacing:20.0,
+                  runSpacing: 20.0,
+                  children:[
+                    SizedBox(
+                      width:180.0,
+                      height: 180.0,
+                      child: Card(
+                        color:Color.fromARGB(255, 249, 249, 249),
+                        elevation:2.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0)
+                        ),
+                        child:Center(
+                          child:Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Column(
+                              children: [
+                                IconButton(
+                                  onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> QuizGame()));},
+                                  iconSize: 140.0,icon: Image.asset("assets/quiz1.png"),
+                                  ),
+                                
+                              ],
+                            ))))
+
+                    ),
+                    SizedBox(
+                      width: 180.0,
+                      height: 180.0,
+                      child: Card(
+                        color:Color.fromARGB(255, 255, 255, 255),
+                        elevation:2.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0)
+                        ),
+                        child:Center(
+                          
+                          child:Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Column(
+                              children: [
+                                IconButton(
+                                  onPressed: (){Overlay.of(context)?.insert(_getEntry(context));},
+                                  iconSize: 150.0,icon:Image.asset('assets/matches2.jpg'),
+                                  ),
+                                
+                              ],
+                            ))))
+
+                    ),
+
+                    SizedBox(
+                      width:180.0,
+                      height: 180.0,
+                      child: Card(
+                        color:Color.fromARGB(255, 255, 255, 255),
+                        elevation:2.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0)
+                        ),
+                        child:Center(
+                          child:Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                IconButton(
+                                  onPressed: (){Overlay.of(context)?.insert(_getEntry(context));},
+                                  iconSize: 130.0,icon:Image.asset('assets/whodid.jpg'),
+                                  ),
+                                
+                              ],
+                            ))))
+
+                    ),
+                    SizedBox(
+                      width:180.0,
+                      height: 180.0,
+                      child: Card(
+                        color:Color.fromARGB(255, 255, 255, 255),
+                        elevation:2.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0)
+                        ),
+                        child:Center(
+                          child:Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                IconButton(
+                                  onPressed: (){Overlay.of(context)?.insert(_getEntry(context));},
+                                  iconSize: 130.0,icon:Image.asset('assets/circuit.jpg'),
+                                  ),
+                                
+                              ],
+                            ))))
+
+                    ),
+                  ]
+
+                ),
+              ),
+            )
+          ]),
+          ),
+    );
   }
+
 }
