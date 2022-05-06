@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/models/Questions.dart';
-
-import '../screens/score/score_screen.dart';
+import 'package:flutter_application_1/screens/score/score_screen.dart';
 
 // We use get package for our state management
 
@@ -48,10 +47,10 @@ class QuestionController extends GetxController
   // called immediately after the widget is allocated memory
   @override
   void onInit() {
-    // Our animation duration is 60 s
-    // so our plan is to fill the progress bar within 60s
+    // Our animation duration is 30 s
+    // so our plan is to fill the progress bar within 30s
     _animationController =
-        AnimationController(duration: Duration(seconds: 60), vsync: this);
+        AnimationController(duration: Duration(seconds: 30), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
       ..addListener(() {
         // update like setState
@@ -59,7 +58,7 @@ class QuestionController extends GetxController
       });
 
     // start our animation
-    // Once 60s is completed go to the next qn
+    // Once 30s is completed go to the next qn
     _animationController.forward().whenComplete(nextQuestion);
     _pageController = PageController();
     super.onInit();
@@ -79,7 +78,7 @@ class QuestionController extends GetxController
     _correctAns = question.answer;
     _selectedAns = selectedIndex;
 
-    if (_correctAns == _selectedAns) _numOfCorrectAns++;
+    if (_correctAns == _selectedAns) {_numOfCorrectAns++;}
 
     // It will stop the counter
     _animationController.stop();

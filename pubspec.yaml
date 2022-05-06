@@ -69,6 +69,15 @@ flutter:
       - assets/3.png
       - assets/Background singleplayer.png
       - assets/Background multi.png
+      - assets/back2.jpg
+      - assets/circuit.jpg
+      - assets/whodid.jpg
+      - assets/icons/bg.svg
+      - assets/icons/clock.svg
+      - assets/matches1.jpg
+      - assets/matches2.jpg
+      - assets/quiz1.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

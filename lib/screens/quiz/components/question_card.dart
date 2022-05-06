@@ -8,10 +8,9 @@ import 'option.dart';
 
 class QuestionCard extends StatelessWidget {
   const QuestionCard({
-    Key? key,
-    // it means we have to pass this
+  
     required this.question,
-  }) : super(key: key);
+  }) ;
 
   final Question question;
 
@@ -40,7 +39,7 @@ class QuestionCard extends StatelessWidget {
             (index) => Option(
               index: index,
               text: question.options[index],
-              press: () => _controller.checkAns(question, index), 
+              press: () => _controller.checkAns(question, index),
             ),
           ),
         ],

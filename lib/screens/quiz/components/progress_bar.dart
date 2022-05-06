@@ -6,9 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../constants.dart';
 
 class ProgressBar extends StatelessWidget {
-  const ProgressBar({
-    Key? key,
-  }) : super(key: key);
+  const ProgressBar();
 
   @override
   Widget build(BuildContext context) {
