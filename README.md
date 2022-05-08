@@ -7,4 +7,10 @@ LOGIK ! consists of 4 various mini-games:
      3-Electricity
      4-quiz game
 We chose to use the flutter framework because it is more useful with mobile development, easy to use, and trending new technology. Flutter also requires knowledge of Dart.
+members of the team:
+Ismail Bouhlel
+Ahmed Sta
+Chiheb Hmida
+Iheb Belghith
+
 
