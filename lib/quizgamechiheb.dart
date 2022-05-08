@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 
 var finalScore = 0;
 var questionNumber = 0;
-var quiz = new AnimalQuiz();
+var quiz = new Quiz();
 
-class AnimalQuiz{
+class Quiz{
   var images = [
     "img2", "img3", "img1", "img4", "img5"
   ];
-
 
   var questions = [
     "",
@@ -18,17 +17,16 @@ class AnimalQuiz{
     "Can you find the most intense bulb?",
   ];
 
-
   var choices = [
     ["This circuit contains 3 serial bulbs", "This circuit contains 3 parallel bulbs", " This circuit has no interrupter", "Bulbs will not light up   "],
     ["This circuit contains 3 serial bulbs", "This circuit contains 3 parallel bulbs ", " This circuit has no interrupter", "Bulbs will not light up   "],
     ["Red bulb", "Green bulb", "Yellow bulb", "Yellow & Green"],
-    ["Yellow", "This circuit contains 3 serial bulbs", "Green", "Pink"]
+    ["Yellow", "Red", "Green", "Pink"]
   ];
 
 
   var correctAnswers = [
-    "This circuit contains 3 serial bulbs", "Cat", "Yellow & Green", "Green"
+    "This circuit contains 3 serial bulbs", "This circuit contains 3 parallel bulbs", "Yellow & Green", "Green"
   ];
 }
 
