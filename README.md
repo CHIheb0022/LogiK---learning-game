@@ -1,16 +1,10 @@
-# flutter_application_1
+LOGIK !
+It is an application with different educational mini-games aimed at learning skills or knowledge and developing several aptitudes.
+It is a logic and reflection game with several categories (general knowledge, resolution, simulation, etc.) intended for different age level
+LOGIK ! consists of 4 various mini-games:
+     1-Who did ?
+     2-Matches 
+     3-Electricity
+     4-quiz game
+We chose to use the flutter framework because it is more useful with mobile development, easy to use, and trending new technology. Flutter also requires knowledge of Dart.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
