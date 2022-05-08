@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:flutter_application_1/constants.dart';
 import 'package:flutter_application_1/controllers/question_controller.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_application_1/quizgamechiheb.dart';
 
 import '../quiz/quiz_screen.dart';
 
@@ -145,7 +146,7 @@ class MainMenuPage extends StatelessWidget {
       body : Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/back2.jpg"),
+            image: AssetImage("assets/back20.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -263,7 +264,7 @@ class MainMenuPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 IconButton(
-                                  onPressed: (){Overlay.of(context)?.insert(_getEntry(context));},
+                                  onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Quiz1()));},
                                   iconSize: 130.0,icon:Image.asset('assets/circuit.jpg'),
                                   ),
                                 
