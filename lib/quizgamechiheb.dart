@@ -19,7 +19,7 @@ class Quiz{
 
   var choices = [
     ["This circuit contains 3 serial bulbs", "This circuit contains 3 parallel bulbs", " This circuit has no interrupter", "Bulbs will not light up   "],
-    ["This circuit contains 3 serial bulbs", "This circuit contains 3 parallel bulbs ", " This circuit has no interrupter", "Bulbs will not light up   "],
+    ["This circuit contains 3 serial bulbs ", "This circuit contains 3 parallel bulbs ", " This circuit has no interrupter", "Bulbs will not light up   "],
     ["Red bulb", "Green bulb", "Yellow bulb", "Yellow & Green"],
     ["Yellow", "Red", "Green", "Pink"]
   ];

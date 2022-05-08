@@ -243,7 +243,7 @@ class MainMenuPage extends StatelessWidget {
                               children: [
                                 IconButton(
                                   onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> logicf()));},
-                                  iconSize: 130.0,icon:Image.asset('assets/whodid.jpg'),
+                                  iconSize: 130.0,icon:Image.asset('assets/images/backwhodid.png'),
                                   ),
                                 
                               ],

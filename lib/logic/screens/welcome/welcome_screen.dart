@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 import 'package:flutter_application_1/logic/screens/quiz/quiz_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -13,7 +13,14 @@ class WelcomeScreenl extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset("icons/bg1.gif" , fit: BoxFit.fill),
+          SizedBox.expand(
+          child: Container(
+            decoration: const BoxDecoration(
+            image: DecorationImage(
+            image: AssetImage("icons/bg1.gif"),
+            fit: BoxFit.cover),
+            ),),
+            ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
