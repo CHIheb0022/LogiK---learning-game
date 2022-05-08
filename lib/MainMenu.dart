@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/quizgame.dart';
 import 'package:flutter_application_1/screens/quiz/quiz_screen.dart';
 import 'package:flutter_application_1/screens/welcome/welcome_screen.dart';
+import 'package:flutter_application_1/whodid.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/constants.dart';
 import 'package:flutter_application_1/controllers/question_controller.dart';
@@ -240,7 +241,7 @@ class MainMenuPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 IconButton(
-                                  onPressed: (){Overlay.of(context)?.insert(_getEntry(context));},
+                                  onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> logicf()));},
                                   iconSize: 130.0,icon:Image.asset('assets/whodid.jpg'),
                                   ),
                                 
