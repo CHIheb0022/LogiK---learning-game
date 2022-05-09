@@ -1,4 +1,4 @@
-#######LOGIK !
+'#######'LOGIK !
 It is an application with different educational mini-games aimed at learning skills or knowledge and developing several aptitudes.
 It is a logic and reflection game with several categories (general knowledge, resolution, simulation, etc.) intended for different age level
 LOGIK ! consists of 4 various mini-games:
